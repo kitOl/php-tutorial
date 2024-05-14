@@ -1,25 +1,12 @@
 <?php
-session_start();
+include_once 'header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<h1>HOME</h1>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHP Tutorial::SESSION</title>
-</head>
-
-<body>
-  <ul>
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="contact.php">CONTACT</a></li>
-  </ul>
-
-  <?php
-  $_SESSION['username'] = 'Oleg';
-  ?>
+<?php
+$_SESSION['username'] = 'Oleg';
+?>
 </body>
 
 </html>
