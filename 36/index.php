@@ -13,6 +13,16 @@ include_once 'includes/dbh.inc.php';
 
 <body>
 
+  <?php
+  $sql = "SELECT * FROM users;";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo $row['uid'], '<br>';
+    }
+  }
+  ?>
+
 </body>
 
 </html>
