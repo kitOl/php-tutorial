@@ -17,10 +17,10 @@ if (isset($_POST['submit'])) {
       header("Location: ../index.php?signup=invalidemail");
       exit();
     } else if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)) {
-      header("Location: ../index.php?signup=char");
+      header("Location: ../index.php?signup=charonly");
       exit();
     } else if (!preg_match("/^[a-zA-Z0-9]*$/", $uid)) {
-      header("Location: ../index.php?signup=username");
+      header("Location: ../index.php?signup=usernamewrong");
       exit();
     } else {
       header("Location: ../index.php?signup=success");

@@ -7,8 +7,7 @@ body {
 
 p {
   width: 30vw;
-  margin: 0 auto;
-  color: red;
+  margin: 10px auto;
   font-size: 16px;
   font-weight: 500;
   text-align: center;
@@ -32,4 +31,14 @@ button {
 
 button {
   margin-inline: 6px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
 }

@@ -25,8 +25,29 @@
     <button type="submit" name="submit">Sing up</button>
 
   </form>
+  <?php
+  $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  ?>
+  <p><?= $fullUrl ?></p>
 
-  <p><?= $_GET['signup'] ?? '' ?>
+  <?php if (isset($_GET['signup'])) {
+    if ($_GET['signup'] == 'empty') {
+      echo "<p class='error'>You did not fill in all fields!</p>";
+    }
+    if ($_GET['signup'] == 'charonly') {
+      echo "<p class='error'>You used invalid characters!</p>";
+    }
+    if ($_GET['signup'] == 'invalidemail') {
+      echo "<p class='error'>E-mail is invalid!</p>";
+    }
+    if ($_GET['signup'] == 'usernamewrong') {
+      echo "<p class='error'>Username must be contain only alphabetnumbers!</p>";
+    }
+    if ($_GET['signup'] == 'success') {
+      echo "<p class='success'>Signup success!</p>";
+    }
+  }
+  ?>
 
 </body>
 
