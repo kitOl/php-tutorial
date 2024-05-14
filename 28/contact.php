@@ -4,10 +4,11 @@ include_once 'header.php';
 
 <h1>CONTACT</h1>
 
-
-<?php
-echo $_SESSION['username'];
-?>
+<h3>
+  <?php
+  echo $_SESSION['username'];
+  ?>
+</h3>
 
 </body>
 
