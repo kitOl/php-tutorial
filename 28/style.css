@@ -1,0 +1,12 @@
+ul {
+  width: fit-content;
+  padding: 15px 15px 15px 30px;
+  box-shadow: 0 0 15px magenta;
+}
+
+h1 {
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 0 12px green;
+}
