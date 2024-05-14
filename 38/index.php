@@ -23,6 +23,7 @@
     <button type="submit" name="submit">Submit</button>
   </form>
 
+  <p><?= $_GET['signup'] ?? '' ?>
 
 </body>
 
