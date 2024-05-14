@@ -8,7 +8,13 @@ $uid = mysqli_real_escape_string($conn, $_POST['uid']);
 $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
 
 $sql = "INSERT INTO users (first, last, email, uid, pwd)
-  VALUES ('$first', '$last', '$email', '$uid', '$pwd');";
-$result = mysqli_query($conn, $sql);
+  VALUES (?, ?, ?, ?, ?);";
+$stmt = mysqli_stmt_init($conn);
+if (!mysqli_stmt_prepare($stmt, $sql)) {
+  echo "SQL error";
+} else {
+  mysqli_stmt_bind_param($stmt, 'sssss', $first, $last, $email, $uid, $pwd);
+  mysqli_stmt_execute($stmt);
+}
 
 header("Location: ../index.php?signup=success");
