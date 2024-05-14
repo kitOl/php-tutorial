@@ -11,13 +11,13 @@
 <body>
   <h2>Sign Up</h2>
   <form action="includes/signup.inc.php" method="post">
-    <input type="text" name="first" placeholder="Firstname">
+    <input type="text" name="first" placeholder="Firstname" value="<?= $_GET['first'] ?? '' ?>" />
     <br>
-    <input type="text" name="last" placeholder="Lastname">
+    <input type="text" name="last" placeholder="Lastname" value="<?= $_GET['last'] ?? '' ?>" />
     <br>
-    <input type="text" name="email" placeholder="E-mail">
+    <input type="text" name="email" placeholder="E-mail" value="<?= $_GET['email'] ?? '' ?>">
     <br>
-    <input type="text" name="uid" placeholder="Username">
+    <input type="text" name="uid" placeholder="Username" value="<?= $_GET['uid'] ?? '' ?>" />
     <br>
     <input type="password" name="pwd" placeholder="Password">
     <br>
@@ -33,18 +33,23 @@
   <?php if (isset($_GET['signup'])) {
     if ($_GET['signup'] == 'empty') {
       echo "<p class='error'>You did not fill in all fields!</p>";
+      exit();
     }
     if ($_GET['signup'] == 'charonly') {
       echo "<p class='error'>You used invalid characters!</p>";
+      exit();
     }
     if ($_GET['signup'] == 'invalidemail') {
       echo "<p class='error'>E-mail is invalid!</p>";
+      exit();
     }
     if ($_GET['signup'] == 'usernamewrong') {
       echo "<p class='error'>Username must be contain only alphabetnumbers!</p>";
+      exit();
     }
     if ($_GET['signup'] == 'success') {
       echo "<p class='success'>Signup success!</p>";
+      exit();
     }
   }
   ?>

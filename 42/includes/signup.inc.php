@@ -14,13 +14,13 @@ if (isset($_POST['submit'])) {
     exit();
   } else {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      header("Location: ../index.php?signup=invalidemail");
+      header("Location: ../index.php?signup=invalidemail&first=$first&last=$last&uid=$uid");
       exit();
     } else if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)) {
-      header("Location: ../index.php?signup=charonly");
+      header("Location: ../index.php?signup=charonly&uid=$uid&email=$email");
       exit();
     } else if (!preg_match("/^[a-zA-Z0-9]*$/", $uid)) {
-      header("Location: ../index.php?signup=usernamewrong");
+      header("Location: ../index.php?signup=usernamewrong&first=$first&last=$last&email=$email");
       exit();
     } else {
       header("Location: ../index.php?signup=success");
