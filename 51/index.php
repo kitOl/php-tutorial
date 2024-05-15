@@ -13,6 +13,13 @@
     <input type="file" name="file" placeholder="Choice file">
     <button type="submit" name="submit">UPLOAD</button>
   </form>
+  <?php
+  if (isset($_GET['upload'])) {
+    if ($_GET['upload'] == 'success') {
+      echo '<p>You file uploaded!</p>';
+    }
+  }
+  ?>
 
 </body>
 
