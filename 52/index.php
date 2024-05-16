@@ -38,8 +38,8 @@ include_once 'dbh.php';
   ?>
         <div class="user-container">
           <img src="<?= $srcImg ?>" id="<?= mt_rand() ?>" alt="Profile Image" />
-          <p class=""><?= $row['id'] ?></p>
-          <p class="p-title"><?= $row['username'] ?></p>
+
+          <p class="p-title"><span><?= $row['id'] ?><br></span><?= $row['username'] ?></p>
         </div>
   <?php
       }
@@ -51,10 +51,11 @@ include_once 'dbh.php';
 
   <?php
   if (isset($_SESSION['userId'])) {
-
   ?>
 
     <p class="p-title">You are logged in as user #<?= $_SESSION['userId'] ?? "" ?></p>
+    <p class="success"><?= $_SESSION['errors']['login'] ?? "" ?></p>
+
     <form action="upload.php" method="post" enctype="multipart/form-data">
       <input type="file" name="file">
       <button type="submit" name="submit">UPLOAD</button>
@@ -75,9 +76,10 @@ include_once 'dbh.php';
 
   <?php
   } else {
-    echo "You are not logged in!";
-  ?>
+    echo "<p>You are not logged in!</p>";
 
+  ?>
+    <p class="error"><?= $_SESSION['errors']['login'] ?? "" ?></p>
     <form action="signup.php" method="post">
       <input type="text" name="first" placeholder="First name">
       <input type="text" name="last" placeholder="Last name">
@@ -90,6 +92,8 @@ include_once 'dbh.php';
     <p class="p-title">Login as user!</p>
     <form action="login.php" method="post">
       <input type="text" name="uid" placeholder="Username">
+      <input type="password" name="pwd" placeholder="Password">
+
       <button type="submit" name="submitLogin">Login</button>
     </form>
   <?php

@@ -48,3 +48,11 @@ form {
 form button {
   padding: 4px;
 }
+
+.error {
+  color: red;
+}
+
+.success {
+  color: blue;
+}
