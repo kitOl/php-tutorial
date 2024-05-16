@@ -10,11 +10,15 @@ include_once 'dbh.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Tutorial::Upload Files</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <?php
+
+  $userId = $_SESSION['userId'] ?? "";
+
   $sql = "SELECT * FROM users;";
   $result = mysqli_query($conn, $sql);
 
@@ -22,7 +26,7 @@ include_once 'dbh.php';
     while ($row = mysqli_fetch_assoc($result)) {
       $id = $row['id'];
 
-      $sqlImg = "SELECT * FROM profileimg WHERE userid = '$id';";
+      $sqlImg = "SELECT * FROM profileimg WHERE user_id = '$id';";
       $resultImg = mysqli_query($conn, $sqlImg);
 
       while ($rowImg = mysqli_fetch_assoc($resultImg)) {
@@ -32,9 +36,10 @@ include_once 'dbh.php';
           $srcImg = 'uploads/profiledefault.jpg';
         }
   ?>
-        <div>
-          <img src="<?= $srcImg ?>" alt="Profile Image">
-          $row['username'];
+        <div class="user-container">
+          <img src="<?= $srcImg ?>" id="<?= mt_rand() ?>" alt="Profile Image" />
+          <p class=""><?= $row['id'] ?></p>
+          <p class="p-title"><?= $row['username'] ?></p>
         </div>
   <?php
       }
@@ -45,18 +50,35 @@ include_once 'dbh.php';
   ?>
 
   <?php
-  if (isset($_SESSION['id'])) {
-    if ($_SESSION['id'] == 1) {
-      echo "You are logged in as user #1";
-    } ?>
+  if (isset($_SESSION['userId'])) {
+
+  ?>
+
+    <p class="p-title">You are logged in as user #<?= $_SESSION['userId'] ?? "" ?></p>
     <form action="upload.php" method="post" enctype="multipart/form-data">
       <input type="file" name="file">
       <button type="submit" name="submit">UPLOAD</button>
     </form>
+
+    <?php
+    if (isset($_GET['upload'])) {
+      if ($_GET['upload'] == 'success') {
+        echo '<p>You file uploaded!</p>';
+      }
+    }
+    ?>
+
+    <p class="p-title">Logout as user #<?= $_SESSION['userId'] ?? "" ?></p>
+    <form action="logout.php" method="post">
+      <button type="submit" name="submitLogout">Logout</button>
+    </form>
+
   <?php
   } else {
-    echo "You are not logged in!"; ?>
-    <form action="login.php" method="post">
+    echo "You are not logged in!";
+  ?>
+
+    <form action="signup.php" method="post">
       <input type="text" name="first" placeholder="First name">
       <input type="text" name="last" placeholder="Last name">
       <input type="text" name="uid" placeholder="Username">
@@ -64,27 +86,15 @@ include_once 'dbh.php';
 
       <button type="submit" name="submitSingup">Signup</button>
     </form>
+
+    <p class="p-title">Login as user!</p>
+    <form action="login.php" method="post">
+      <input type="text" name="uid" placeholder="Username">
+      <button type="submit" name="submitLogin">Login</button>
+    </form>
   <?php
   }
   ?>
-
-  <?php
-  if (isset($_GET['upload'])) {
-    if ($_GET['upload'] == 'success') {
-      echo '<p>You file uploaded!</p>';
-    }
-  }
-  ?>
-
-  <p>Login as user!</p>
-  <form action="login.php" method="post">
-    <button type="submit" name="submitLogin">Login</button>
-  </form>
-
-  <p>Logout as user!</p>
-  <form action="logout.php" method="post">
-    <button type="submit" name="submitLogout">Logout</button>
-  </form>
 
 </body>
 
