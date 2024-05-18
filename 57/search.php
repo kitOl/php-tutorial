@@ -18,11 +18,12 @@ include 'header.php';
 
     if ($queryResult) {
       while ($row = mysqli_fetch_assoc($result)) {
+        $truncated = mb_strimwidth($row['text'], 0, 300, "...");
   ?>
         <a href="article.php?id=<?= $row['id'] ?>">
           <div class="article-box">
             <h3><?= $row['title'] ?></h3>
-            <p><?= $row['text'] ?></p>
+            <p><?= $truncated ?></p>
             <p><?= $row['date'] ?></p>
             <p><?= $row['author'] ?></p>
           </div>

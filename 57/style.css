@@ -9,11 +9,15 @@ nav {
 }
 
 a {
-  display: inline-block;
+  display: block;
   padding: 10px;
   text-decoration: none;
   color: #1d1d1d;
   transition: all 0.2s ease-in-out;
+}
+
+nav a {
+  display: inline-block;
 }
 
 a:hover {
