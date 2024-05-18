@@ -8,6 +8,20 @@ nav {
   /* text-align: center; */
 }
 
+a {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  color: #1d1d1d;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgb(124, 176, 193);
+  background-color: #fff;
+}
+
 .article-container {
   width: 900px;
   background-color: #fff;
@@ -29,4 +43,8 @@ button {
 input {
   padding: 0 20px;
   height: 40px;
+}
+
+.result {
+  font-weight: bold;
 }

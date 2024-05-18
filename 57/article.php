@@ -2,17 +2,11 @@
 include 'header.php';
 ?>
 
-<form action="search.php" method="post">
-  <input autofocus type="text" name="search" placeholder="Search">
-  <button type="submit" name="submit-search">Search</button>
-</form>
-
-<h1>Front page</h1>
-<h2>All articles</h2>
+<h1>Article page</h1>
 
 <div class="article-container">
   <?php
-  $sql = "SELECT * FROM articles;";
+  $sql = "SELECT * FROM articles WHERE id = '" . $_GET['id'] . "';";
   $result = mysqli_query($conn, $sql);
 
   $queryResults = mysqli_num_rows($result);

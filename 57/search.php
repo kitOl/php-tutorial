@@ -14,17 +14,19 @@ include 'header.php';
     $result = mysqli_query($conn, $sql);
     $queryResult = mysqli_num_rows($result);
 
+    echo "<p class='result'>There are " . $queryResult . " results!</p>";
+
     if ($queryResult) {
       while ($row = mysqli_fetch_assoc($result)) {
   ?>
-
-        <div class="article-box">
-          <h3><?= $row['title'] ?></h3>
-          <p><?= $row['text'] ?></p>
-          <p><?= $row['date'] ?></p>
-          <p><?= $row['author'] ?></p>
-        </div>
-
+        <a href="article.php?id=<?= $row['id'] ?>">
+          <div class="article-box">
+            <h3><?= $row['title'] ?></h3>
+            <p><?= $row['text'] ?></p>
+            <p><?= $row['date'] ?></p>
+            <p><?= $row['author'] ?></p>
+          </div>
+        </a>
   <?php
 
       }
