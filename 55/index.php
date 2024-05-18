@@ -15,8 +15,8 @@
   </nav>
   <section>
 
-
     <form action="deletefile.php" method="post">
+      <input type="text" name="filenamelist" placeholder="Separate each name with a comma (,)" style="width: 300px;" />
       <button type="submit" name="submit">Delete file</button>
     </form>
     <?php if (isset($_GET['deletefile'])) { ?>
