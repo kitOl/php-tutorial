@@ -31,14 +31,19 @@ include_once 'dbh.php';
       if (mysqli_num_rows($resultImg)) {
         while ($rowImg = mysqli_fetch_assoc($resultImg)) {
           if ($rowImg['status'] == 0) {
-            $srcImg = "uploads/profile" . $id . ".jpg?";
+            $filename = "uploads/profile" . $id . "*";
+            $fileinfo = glob($filename);
+            $fileExt = explode('.', $fileinfo[0]);
+            $fileActualExt = $fileExt[1];
+
+            $srcImg = "uploads/profile" . $id . "." . $fileActualExt;
           } else {
             $srcImg = "uploads/profiledefault.jpg";
           }
   ?>
           <div class='user-container'>
             <img src="<?= $srcImg ?>" id="<? mt_rand() ?>" alt="Profile Image">
-            <p><?= $row['username'] ?></p>
+            <p><span><?= $row['id'] ?></span><br><?= $row['username'] ?></p>
           </div>
 
     <?php
@@ -56,6 +61,10 @@ include_once 'dbh.php';
     <form action="upload.php" method="post" enctype="multipart/form-data">
       <input type="file" name="file">
       <button type="submit" name="submit">UPLOAD</button>
+    </form>
+
+    <form action="deleteprofileimg.php" method="post">
+      <button type="submit" name="submit-delete">Delete profile image</button>
     </form>
 
     <p>Logout!</p>
