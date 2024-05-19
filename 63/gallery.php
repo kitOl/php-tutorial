@@ -53,6 +53,16 @@
             <p>This is a paragraph</p>
           </a>
         </div>
+
+        <div class="gallery-upload">
+          <form action="includes/gallery-upload.inc.php" method="post">
+            <input type="text" name="filename" placeholder="File name...">
+            <input type="text" name="filetitle" placeholder="Image title...">
+            <input type="text" name="filedesc" placeholder="Image description...">
+            <input type="file" name="file">
+            <button type="submit" name="submit">UPLOAD</button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
