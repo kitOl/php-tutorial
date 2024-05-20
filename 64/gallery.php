@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['username'] = 'admin';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +59,8 @@
           </a>
         </div>
 
+        <?php if (isset($_SESSION['username'])) {
+        } ?>
         <div class="gallery-upload">
           <form action="includes/gallery-upload.inc.php" method="post">
             <input type="text" name="filename" placeholder="File name...">
