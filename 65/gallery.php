@@ -32,37 +32,34 @@ $_SESSION['username'] = 'admin';
         <h2>Gallery</h2>
 
         <div class="gallery-container">
-          <a href="#">
-            <div></div>
-            <h3>This is a title</h3>
-            <p>This is a paragraph</p>
-          </a>
-          <a href="#">
-            <div></div>
-            <h3>This is a title</h3>
-            <p>This is a paragraph</p>
-          </a>
-          <a href="#">
-            <div></div>
-            <h3>This is a title</h3>
-            <p>This is a paragraph</p>
-          </a>
-          <a href="#">
-            <div></div>
-            <h3>This is a title</h3>
-            <p>This is a paragraph</p>
-          </a>
-          <a href="#">
-            <div></div>
-            <h3>This is a title</h3>
-            <p>This is a paragraph</p>
-          </a>
-        </div>
+          <?php
+          include_once 'includes/dbh.inc.php';
 
-        <?php if (isset($_SESSION['username'])) {
-        } ?>
+          $sql = "SELECT * FROM gallery ORDER BY orderimg DESC;";
+          $stmt = mysqli_stmt_init($conn);
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "SQL statement failed!";
+          } else {
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+              <a href="#">
+                <div style="background-image: url(img/gallery/<?= $row['imgFullName'] ?>);"></div>
+                <h3><?= $row['title'] ?></h3>
+                <p><?= $row['descimg'] ?></p>
+              </a>
+          <?php
+            }
+          }
+          ?>
+
+          <?php if (isset($_SESSION['username'])) {
+          } ?>
+        </div>
         <div class="gallery-upload">
-          <form action="includes/gallery-upload.inc.php" method="post">
+          <form action="includes/gallery-upload.inc.php" method="post" enctype="multipart/form-data">
             <input type="text" name="filename" placeholder="File name...">
             <input type="text" name="filetitle" placeholder="Image title...">
             <input type="text" name="filedesc" placeholder="Image description...">
@@ -70,6 +67,7 @@ $_SESSION['username'] = 'admin';
             <button type="submit" name="submit">UPLOAD</button>
           </form>
         </div>
+
       </div>
     </section>
   </main>
