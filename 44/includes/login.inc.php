@@ -30,7 +30,7 @@ if (isset($_POST['login-submit'])) {
           $_SESSION['userUid'] = $row['uid'];
           $_SESSION['userId'] = $row['id'];
 
-          header("Location: ../index.php?login=success");
+          header("Location: ../index.php?login=success&pwd=$password");
           exit();
         } else {
 

@@ -28,7 +28,7 @@ session_start();
       <div class="header-login">
         <?php if (!isset($_SESSION['userId'])) : ?>
           <form action="includes/login.inc.php" method="post" autocomplete="off">
-            <input type="text" name="mailuid" placeholder="E-mail/Username...">
+            <input type="text" name="mailuid" placeholder="E-mail/Username..." value="<?= $_GET['mailuid'] ?? '' ?>" />
             <input type="password" name="pwd" placeholder="Password">
             <button type="submit" name="login-submit">Login</button>
           </form>
