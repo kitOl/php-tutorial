@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,15 +26,20 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <div class="header-login">
-        <form action="includes/login.inc.php" method="post" autocomplete="off">
-          <input type="text" name="mailuid" placeholder="E-mail/Username...">
-          <input type="password" name="pwd" placeholder="Password">
-          <button type="submit" name="login-submit">Login</button>
-        </form>
-        <a href="signup.php">Signup</a>
-        <form action="includes/logout.inc.php" method="post">
-          <button type="submit" name="logout-submit">Logout</button>
-        </form>
+        <?php if (!isset($_SESSION['userId'])) : ?>
+          <form action="includes/login.inc.php" method="post" autocomplete="off">
+            <input type="text" name="mailuid" placeholder="E-mail/Username...">
+            <input type="password" name="pwd" placeholder="Password">
+            <button type="submit" name="login-submit">Login</button>
+          </form>
+          <a href="signup.php">Signup</a>
+        <?php else : ?>
+
+          <a href="profile.php"><?= $_SESSION['userUid'] ?></a>
+          <form action="includes/logout.inc.php" method="post">
+            <button type="submit" name="logout-submit">Logout</button>
+          </form>
+        <?php endif; ?>
       </div>
     </nav>
 

@@ -2,8 +2,6 @@
 
 if (isset($_POST['signup-submit'])) {
 
-  require 'dbh.inc.php';
-
   $username = $_POST['uid'];
   $email = $_POST['email'];
   $password = $_POST['pwd'];
@@ -22,6 +20,8 @@ if (isset($_POST['signup-submit'])) {
     header("Location: ../signup.php?error=passwordsnotmatch&uid=$username&email=$email");
     exit();
   } else {
+
+    require 'dbh.inc.php';
 
     $sql = "SELECT * FROM users WHERE uid = ? OR email = ?;";
     $stmt = mysqli_stmt_init($conn);

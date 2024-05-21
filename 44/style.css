@@ -15,12 +15,14 @@ body {
   height: 80px;
   display: flex;
   padding: 0 20px;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   background-color: #fcfcfc;
 }
 
 nav ul {
+  margin-left: 30px;
+  margin-right: auto;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -74,6 +76,7 @@ button {
   border-radius: 5px;
   color: #fff;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 main {
@@ -101,4 +104,5 @@ main {
   width: max-content;
   text-align: center;
   margin: 6px auto;
+  cursor: pointer;
 }

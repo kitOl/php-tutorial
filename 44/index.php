@@ -5,8 +5,11 @@ include 'header.php';
 <main>
   <div class="wrapper-main">
     <section class="section-default">
-      <p class="login-status">You are logged out!</p>
-      <p class="login-status">You are logged in!</p>
+      <?php if (isset($_SESSION['userId'])) : ?>
+        <p class="login-status">You are logged in!</p>
+      <?php else : ?>
+        <p class="login-status">You are logged out!</p>
+      <?php endif; ?>
     </section>
   </div>
 </main>
