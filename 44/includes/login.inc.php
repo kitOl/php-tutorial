@@ -6,7 +6,7 @@ if (isset($_POST['login-submit'])) {
   $password = $_POST['pwd'];
 
   if (empty($mailuid) || empty($password)) {
-    header("Location: ../login.php?error=emptyfields&mailuid=$mailuid");
+    header("Location: ../index.php?error=emptyfields&mailuid=$mailuid");
     exit();
   } else {
     require 'dbh.inc.php';
@@ -14,7 +14,7 @@ if (isset($_POST['login-submit'])) {
     $sql = "SELECT * FROM users WHERE uid = ? OR email = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../signup.php?error=sqlerror");
+      header("Location: ../index.php?error=sqlerror");
       exit();
     } else {
 

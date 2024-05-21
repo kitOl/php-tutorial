@@ -106,3 +106,21 @@ main {
   margin: 6px auto;
   cursor: pointer;
 }
+
+.error,
+.success {
+  width: max-content;
+  padding: 5px;
+  margin: 10px auto 0;
+  border-radius: 5px;
+  box-shadow: 0 0 12px;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
