@@ -22,8 +22,8 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <div class="header-login">
-        <form action="includes/login.inc.php" method="post">
-          <input type="text" name="mailuid" placeholder="Username/E-mail...">
+        <form action="includes/login.inc.php" method="post" autocomplete="off">
+          <input type="text" name="mailuid" placeholder="E-mail/Username...">
           <input type="password" name="pwd" placeholder="Password">
           <button type="submit" name="login-submit">Login</button>
         </form>

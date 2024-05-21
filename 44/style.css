@@ -7,6 +7,7 @@ body {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  background-color: #f0f0f0;
 }
 
 .nav-header-main {
@@ -16,6 +17,7 @@ body {
   padding: 0 20px;
   justify-content: space-between;
   align-items: center;
+  background-color: #fcfcfc;
 }
 
 nav ul {
@@ -33,6 +35,11 @@ a {
   text-transform: uppercase;
 }
 
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .header-logo img {
   width: auto;
   height: 30px;
@@ -45,14 +52,16 @@ a {
   gap: 20px;
 }
 
-.header-login input {
+.header-login input,
+.form-signup input {
   padding: 5px;
   margin-right: 5px;
   line-height: 1.5;
   font-size: 14px;
   border: lightgray;
   border-radius: 5px;
-  background-color: #fcfcfc;
+  background-color: #f0f0f0;
+  outline-color: aquamarine;
 }
 
 .header-login a {
@@ -65,4 +74,31 @@ button {
   border-radius: 5px;
   color: #fff;
   text-transform: uppercase;
+}
+
+main {
+  padding: 15px 0;
+}
+
+.wrapper-main {
+  width: 50vw;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.form-signup {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 12px auto;
+}
+
+.form-signup button {
+  width: max-content;
+  text-align: center;
+  margin: 6px auto;
 }
